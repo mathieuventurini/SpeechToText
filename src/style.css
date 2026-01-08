@@ -262,6 +262,19 @@ button {
   border: 3px solid var(--border-color);
   color: white;
   box-shadow: var(--hard-shadow);
+  transition: all 0.3s ease;
+}
+
+.primary-btn.success {
+  background-color: #27ae60 !important;
+  border-color: #27ae60 !important;
+  color: white !important;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.2); /* Slight inset for distinct look */
+}
+
+button:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
 }
 
 .primary-btn:hover {

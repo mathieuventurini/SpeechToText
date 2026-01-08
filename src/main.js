@@ -140,13 +140,22 @@ sendBtn.addEventListener('click', () => {
 
   emailjs.send(serviceID, templateID, templateParams)
     .then(() => {
-      alert("Email envoyé avec succès !");
-      transcriptArea.value = ""; // Optional: Clear after send
+      // Success State
+      sendBtn.innerText = "Succès !";
+      sendBtn.classList.add('success');
+
+      transcriptArea.value = "";
       committedText = "";
+
+      // Wait 3 seconds then reset
+      setTimeout(() => {
+        sendBtn.innerText = "Envoyer Email";
+        sendBtn.classList.remove('success');
+        sendBtn.disabled = false;
+      }, 3000);
     }, (err) => {
+      // Error State
       alert("Erreur lors de l'envoi : " + JSON.stringify(err));
-    })
-    .finally(() => {
       sendBtn.innerText = originalText;
       sendBtn.disabled = false;
     });
