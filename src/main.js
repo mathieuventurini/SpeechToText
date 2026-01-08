@@ -118,13 +118,38 @@ recordBtn.addEventListener('click', () => {
 
 sendBtn.addEventListener('click', () => {
   const body = transcriptArea.value;
-  const subject = subjectInput.value || "Note Dictée";
+  const subject = subjectInput ? subjectInput.value : "Note Dictée";
+
   if (!body) {
     alert("Veuillez dicter du texte d'abord !");
     return;
   }
-  const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.open(mailtoUrl, '_blank');
+
+  // Update button state
+  const originalText = sendBtn.innerText;
+  sendBtn.innerText = "Envoi en cours...";
+  sendBtn.disabled = true;
+
+  const serviceID = "service_lipbp2d";
+  const templateID = "template_9z4nn4l";
+
+  const templateParams = {
+    subject: subject,
+    message: body
+  };
+
+  emailjs.send(serviceID, templateID, templateParams)
+    .then(() => {
+      alert("Email envoyé avec succès !");
+      transcriptArea.value = ""; // Optional: Clear after send
+      committedText = "";
+    }, (err) => {
+      alert("Erreur lors de l'envoi : " + JSON.stringify(err));
+    })
+    .finally(() => {
+      sendBtn.innerText = originalText;
+      sendBtn.disabled = false;
+    });
 });
 
 copyBtn.addEventListener('click', () => {
