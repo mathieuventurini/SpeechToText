@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceMail - Speak & Send</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="glass-container">
+      <header>
+        <h1>VoiceMail</h1>
+        <p>Dictez. Relisez. Envoyez.</p>
+      </header>
+
+      <main id="main">
+        <div class="control-center">
+          <button id="record-btn" class="record-btn" aria-label="Toggle Recording">
+            <div class="mic-icon">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                <path
+                  d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
+              </svg>
+            </div>
+          </button>
+          <div id="pulse-ring" class="pulse-ring"></div>
+        </div>
+
+        <div class="input-group">
+          <textarea id="transcript" placeholder="Votre texte apparaîtra ici..." spellcheck="false"></textarea>
+        </div>
+
+        <div class="action-bar">
+          <div class="button-row">
+            <button id="clear-btn" class="secondary-btn" style="color: #e74c3c; border-color: #e74c3c;">Effacer</button>
+            <button id="copy-btn" class="secondary-btn">Copier</button>
+            <button id="send-btn" class="primary-btn">Envoyer Email</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

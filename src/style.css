@@ -1,0 +1,323 @@
+:root {
+  /* Vintage 2D Palette */
+  --bg-color: #f4e4bc;
+  /* Warm Beige */
+  --card-bg: #fff8e1;
+  /* Light Cream */
+  --text-main: #3e2723;
+  /* Dark Coffee Brown */
+  --border-color: #3e2723;
+  /* Thick Brown Borders */
+
+  --accent-orange: #d84315;
+  /* Burnt Orange */
+  --accent-yellow: #fbc02d;
+  /* Retro Yellow */
+
+  /* Shadows - Scaled down for smaller UI */
+  --hard-shadow: 3px 3px 0px var(--border-color);
+  --hard-shadow-hover: 5px 5px 0px var(--border-color);
+  --hard-shadow-active: 1px 1px 0px var(--border-color);
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  background: var(--bg-color);
+  background-image: radial-gradient(var(--text-main) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text-main);
+  min-height: 100vh;
+  /* Allow scrolling if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  margin-top: -15px;
+}
+
+/* Compact Container */
+.glass-container {
+  width: 100%;
+  max-width: 420px;
+  /* Reduced from 600px */
+  background: var(--card-bg);
+  border: 3px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  /* Reduced padding */
+  box-shadow: var(--hard-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Tighter gap */
+  position: relative;
+}
+
+/* Enhanced Retro Title */
+header {
+  text-align: center;
+  border-bottom: 2px dashed var(--border-color);
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+header h1 {
+  font-family: 'DM Serif Display', serif;
+  margin: 0;
+  font-weight: 400;
+  font-size: 2.8rem;
+  /* Large but impactful */
+  color: var(--text-main);
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0px var(--accent-yellow);
+  /* Pop effect */
+  line-height: 1;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: var(--accent-orange);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.control-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  /* Restore width */
+  margin: 0 auto;
+  /* Center block */
+}
+
+.mic-icon {
+
+  margin-top: 2px;
+}
+
+/* Smaller Button */
+.record-btn {
+  width: 64px;
+  margin-bottom: 15px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--border-color);
+  background: var(--accent-yellow);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: var(--hard-shadow);
+  flex-shrink: 0;
+}
+
+/* Adjust icon size inside button */
+.record-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.record-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--hard-shadow-hover);
+  background: #ffee58;
+}
+
+.record-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--hard-shadow-active);
+}
+
+.record-btn.recording {
+  background: var(--accent-orange);
+  color: white;
+  animation: pulse-border 1.5s infinite;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(216, 67, 21, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(216, 67, 21, 0);
+  }
+
+  /* Smaller pulse */
+  100% {
+    box-shadow: 0 0 0 0 rgba(216, 67, 21, 0);
+  }
+}
+
+.pulse-ring {
+  display: none;
+}
+
+#status-indicator {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 700;
+  background: white;
+  padding: 8px 12px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  /* Make it take remaining space nicely or just block? */
+  flex-grow: 1;
+  text-align: center;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  min-height: auto;
+  margin: 0;
+}
+
+/* Compact Textarea */
+.input-group textarea {
+  width: 90%;
+  height: 180px;
+  /* Reduced from 250 */
+  background: white;
+  /* Adjusted lined paper for checking */
+  background-image: repeating-linear-gradient(white 0px, white 29px, #e0e0e0 30px);
+  line-height: 30px;
+  border: 3px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0 15px;
+  padding-top: 2px;
+  /* Visual alignment */
+  color: var(--text-main);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.95rem;
+  resize: vertical;
+  outline: none;
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.05);
+}
+
+.input-group textarea:focus {
+  border-color: var(--accent-orange);
+}
+
+.action-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#email-subject {
+  width: 100%;
+  background: white;
+  border: 3px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px 15px;
+  color: var(--text-main);
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  outline: none;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+#email-subject:focus {
+  border-color: var(--accent-orange);
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+}
+
+button {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 12px 16px;
+  flex: 1;
+  transition: all 0.1s ease;
+}
+
+.primary-btn {
+  flex: 2;
+  background: var(--accent-orange);
+  border: 3px solid var(--border-color);
+  color: white;
+  box-shadow: var(--hard-shadow);
+}
+
+.primary-btn:hover {
+  background: #bf360c;
+  transform: translate(-1px, -1px);
+  box-shadow: var(--hard-shadow-hover);
+}
+
+.primary-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: var(--hard-shadow-active);
+}
+
+.secondary-btn {
+  background: white;
+  border: 3px solid var(--border-color);
+  color: var(--text-main);
+  box-shadow: var(--hard-shadow);
+}
+
+.secondary-btn:hover {
+  background: #fdfbf7;
+  transform: translate(-1px, -1px);
+  box-shadow: var(--hard-shadow-hover);
+}
+
+.secondary-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: var(--hard-shadow-active);
+}
+
+/* Mobile Tweak */
+@media (max-width: 400px) {
+
+  /* Force content to top with 20px spacing */
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  #app {
+    padding-top: 0;
+    align-items: flex-start;
+  }
+
+  .record-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .record-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+}
