@@ -116,7 +116,15 @@ recordBtn.addEventListener('click', () => {
   }
 });
 
+
+function stopRecordingIfActive() {
+  if (isRecording && recognition) {
+    recognition.stop();
+  }
+}
+
 sendBtn.addEventListener('click', () => {
+  stopRecordingIfActive();
   const body = transcriptArea.value;
   const subject = subjectInput ? subjectInput.value : "Note Dictée";
 
@@ -162,6 +170,7 @@ sendBtn.addEventListener('click', () => {
 });
 
 copyBtn.addEventListener('click', () => {
+  stopRecordingIfActive();
   if (!transcriptArea.value) return;
   navigator.clipboard.writeText(transcriptArea.value).then(() => {
     const originalText = copyBtn.textContent;
@@ -177,6 +186,7 @@ copyBtn.addEventListener('click', () => {
 });
 
 clearBtn.addEventListener('click', () => {
+  stopRecordingIfActive();
   transcriptArea.value = "";
   committedText = "";
 });
