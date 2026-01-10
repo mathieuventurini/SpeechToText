@@ -129,7 +129,7 @@ sendBtn.addEventListener('click', () => {
   const subject = subjectInput ? subjectInput.value : "Note Dictée";
 
   if (!body) {
-    alert("Veuillez dicter du texte d'abord !");
+    // alert("Veuillez dicter du texte d'abord !");
     return;
   }
 

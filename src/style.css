@@ -322,10 +322,10 @@ button {
 /* Send Button */
 .primary-btn {
   flex: 2;
-  background: transparent;
+  background: var(--accent-green);
   border: 2px solid var(--accent-green);
-  color: var(--accent-green);
-  box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+  color: black;
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
 }
 
 .primary-btn:hover {
