@@ -416,4 +416,8 @@ button:disabled {
     justify-content: center;
     align-items: center;
   }
+
+  #record-btn {
+    margin-top: unset;
+  }
 }
